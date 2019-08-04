@@ -6,7 +6,7 @@
   ```
 
 ---
-
+# 现有功能
 ## Parallax
 
 ### `insParallax(speed)`
