@@ -1,4 +1,9 @@
-# 用法说明 
+# 引用方法
+  html:
+  ```
+  <script type="module">
+    import { /*some functions*/ } from 'https://raw.githack.com/Insopitus/insopitus.js/master/insopitus.js'    
+  </script>
 
 ---
 
