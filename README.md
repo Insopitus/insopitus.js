@@ -1,4 +1,4 @@
-# 安装方法
+# 安装
 
 ```
 <script src="https://raw.githack.com/Insopitus/insopitus.js/master/insopitus.js"></script>
@@ -6,7 +6,7 @@
 
 ---
 
-# 现有功能
+# 功能
 
 ## Parallax
 
@@ -27,3 +27,9 @@
 ### `Ins.sorting(array, descending)`
 
 接受两个参数，第一个参数为需要排序的数组，第二个参数为是否降序排序，默认为`false`即升序排列。返回排序过的数组，不改变原数组。
+
+## 限流
+
+### `Ins.throttler(callback, time)`
+
+第一个参数为实际要限流执行的回调函数，第二参数是触发间隔，缺省则为66ms
