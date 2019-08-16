@@ -67,5 +67,17 @@ const Ins = {
     } else {
       return arr.reverse()
     }
+  },
+
+  // 限流
+  throttlerSetTime: false,
+  throttler(callback, time) {
+    let delay = parseInt(time) || 100
+    if (!this.throttlerSetTime) {
+      this.throttlerSetTime = setTimeout(() => {
+        this.throttlerSetTime = null
+        callback()
+      }, delay)
+    }
   }
 }
