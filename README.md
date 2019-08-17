@@ -3,7 +3,7 @@
 ```
 <script src="https://raw.githack.com/Insopitus/insopitus.js/master/insopitus.js"></script>
 ```
-建议下载到本地使用。更新中，无法保证对以前版本的兼容性。 ---如果真的还有别人用---
+建议下载到本地使用。更新中，无法保证对以前版本的兼容性。 ~~如果真的还有别人用~~
 
 ---
 
