@@ -4,34 +4,31 @@
 const Ins = {
   parallax(n) {
     const parallax = document.querySelector('.parallax-bg')
-    let set = null
     parallax.style.transition = 'initial'
-    window.addEventListener('scroll', throttler)
-    function throttler() {
-      // 限流，会产生抖动，暂时不使用，等我想到解决方法
-      if (!set) {
-        set = setTimeout(() => {
-          handdler()
-          set = null
-        }, 66)
-      }
-    }
-    function handdler() {
+    window.addEventListener('scroll', () => {
       let scroll = document.body.scrollTop
       parallax.style.backgroundPosition = `center ${scroll * (1 - n)}px`
-    }
+    })
   },
 
-  // 随机id生成
-  randomId(digit) {
-    digit = digit || 4 // digit为id的位数，未传入参数时默认为4；
+  // 随机字符串生成
+  randomString(arg) {
+    let alphabet = ''
+    let digit = 4
+    if (typeof arg === 'object') {
+      if (arg.lowercase !== false) alphabet += 'abcdefghijklmnopqrstuvwxyz'
+      if (arg.uppercase === true) alphabet += 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+      if (arg.number === true) alphabet += '1234567890'
+      digit = arg.digit || digit
+    } else {
+      digit = parseInt(arg) || digit // digit为id的位数，未传入参数时默认为4；
+      alphabet += 'abcdefghijklmnopqrstuvwxyz'
+    }
     var id = []
     id.length = digit
-    var alphabet = 'abcdefghijklmnopqrstuvwxyz' // 要加入大写字母，数字或其他符号可在此处加入
     for (var i = 0; i < digit; i++) {
       id[i] = alphabet[Math.floor(Math.random() * alphabet.length)] // 用随机数（0~1）乘以长度，然后向下取整，整数为字符串中的字符位置
     }
-    //return id[0]+id[1]+id[2]+id[3]+id[4];  // 将位数改为传参实现时不能继续用这个方法了
     var result = ''
     for (var j = 0; j < digit; j++) {
       result = result + id[j]

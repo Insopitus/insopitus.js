@@ -2,6 +2,7 @@
 
 ```
 <script src="https://raw.githack.com/Insopitus/insopitus.js/master/insopitus.js"></script>
+如果真的有人用，还是下载了再用吧，持续更新中，无法保证对以前版本的兼容性。
 ```
 
 ---
@@ -12,15 +13,15 @@
 
 ### `Ins.parallax(speed)`
 
-给设置了背景图片的元素 html 标签添加`class="parallax-bg"`，css 确保`background-position: center 0`
+给设置了背景图片的元素添加`class="parallax-bg"`，css 确保`background-position: center 0`
 
-在 JavaScript 中使用 `insParallax(speed)`调用。其中函数的参数`speed`表示背景跟随滚动的速度，`0` 表示图片不跟随，`0.75` 将以 75%的速度跟随。
+在 JavaScript 中使用 `Ins.parallax(speed)`调用。其中函数的参数`speed`表示背景跟随滚动的速度，`0` 表示图片不跟随，`0.75` 将以 75%的速度跟随。
 
-## 随机 ID 生成
+## 随机字符串生成
 
-### `Ins.randomId(digit)`
+### `Ins.randomString({arg})`
 
-返回一个由小写拉丁字母组成的字符串做为随机 id。参数为输出 id 的位数，默认为 4。还在考虑要不要加入参数让 id 包含大写字母或数字。
+返回一个随机字符串，参数为一个对象，格式为`{digit:4, lowercase:true, uppercase:false, number:false}`，四个属性依次为“位数”，“是否允许出现大写字母”，“是否允许出现小写字母”，“是否允许出现数字”。实例中键值为其默认状态。也接受输入数字为参数，仅指定随机字符串长度，其他默认。参数缺省或为其他不合法字符串将默认输出4位随机小写字母字符串。
 
 ## 数组排序
 
@@ -32,4 +33,4 @@
 
 ### `Ins.throttler(callback, time)`
 
-第一个参数为实际要限流执行的回调函数，第二参数是触发间隔，缺省则为66ms
+第一个参数为实际要限流执行的回调函数，第二参数是触发时间间隔，单位ms，缺省为66。
