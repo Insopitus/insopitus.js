@@ -2,7 +2,7 @@
 
 ```
 <script src="https://raw.githack.com/Insopitus/insopitus.js/master/insopitus.js"></script>
-如果真的有人用，还是下载了再用吧，持续更新中，无法保证对以前版本的兼容性。
+建议下载到本地使用。更新中，无法保证对以前版本的兼容性。---如果真的还有别人用---
 ```
 
 ---
