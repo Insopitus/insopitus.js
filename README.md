@@ -3,13 +3,14 @@
 ```
 <script src="https://raw.githack.com/Insopitus/insopitus.js/master/insopitus.js"></script>
 ```
+
 建议下载到本地使用。更新中，无法保证对以前版本的兼容性。 ~~如果真的还有别人用~~
 
 ---
 
 # 功能
 
-## Parallax
+## 滚动视差(parallax effect)
 
 ### `Ins.parallax(speed)`
 
@@ -21,11 +22,11 @@
 
 ### `Ins.randomString({arg})`
 
-返回一个随机字符串，参数为一个对象，格式为`{digit:4, lowercase:true, uppercase:false, number:false}`，四个属性依次为“位数”，“是否允许出现大写字母”，“是否允许出现小写字母”，“是否允许出现数字”。示例中键值为其默认状态。也接受输入数字为参数，仅指定随机字符串长度，其他默认。参数缺省或为其他不合法字符串将默认输出4位随机小写字母字符串。
+返回一个随机字符串，参数为一个对象，格式为`{digit:4, lowercase:true, uppercase:false, number:false}`，四个属性依次为“位数”，“是否允许出现大写字母”，“是否允许出现小写字母”，“是否允许出现数字”。示例中键值为其默认状态。也接受输入数字为参数，仅指定随机字符串长度，其他默认。参数缺省或为其他不合法字符串将默认输出 4 位随机小写字母字符串。
 
 ## 数组排序
 
-### `Ins.sorting(array, descending)`
+### `Ins.sort(array, descending)`
 
 接受两个参数，第一个参数为需要排序的数组，第二个参数为是否降序排序，默认为`false`即升序排列。返回排序过的数组，不改变原数组。
 
@@ -33,4 +34,4 @@
 
 ### `Ins.throttler(callback, time)`
 
-第一个参数为实际要限流执行的回调函数，第二参数是触发时间间隔，单位ms，缺省为66。
+第一个参数为实际要限流执行的回调函数，第二参数是触发时间间隔，单位 ms，缺省为 66。
