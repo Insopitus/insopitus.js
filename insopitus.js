@@ -46,13 +46,10 @@ const Ins = {
     let arr = new Array(array.length)
     array.forEach((item, index) => (arr[index] = array[index]))
     let i = arr.length
-    let j    
+    let j
     while (i > 0) {
       for (j = 0; j < i; j++) {
         if (arr[j] < arr[j + 1]) {
-          // tmp = arr[j]
-          // arr[j] = arr[j + 1]
-          // arr[j + 1] = tmp
           ;[arr[j], arr[j + 1]] = [arr[j + 1], arr[j]]
         }
       }
