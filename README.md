@@ -8,7 +8,7 @@
 
 ---
 
-# 功能
+# APIs
 
 ## 滚动视差(parallax effect)
 
