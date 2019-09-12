@@ -75,7 +75,7 @@ const Ins = {
   },
 
   // 深拷贝
-  deepClone(obj) {
+  clone(obj) {
     const result = Array.isArray(obj) ? [] : {}
     for (let key in obj) {
       if (obj.hasOwnProperty(key)) {
