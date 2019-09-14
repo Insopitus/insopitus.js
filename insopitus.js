@@ -41,7 +41,6 @@ const Ins = {
     descending = descending || false
     if (!Array.isArray(array)) {
       array = Array.prototype.slice.call(array)
-      console.log(array)
     }
     let arr = new Array(array.length)
     array.forEach((item, index) => (arr[index] = array[index]))
@@ -87,5 +86,41 @@ const Ins = {
       }
     }
     return result
+  },
+
+  // 字符串真实长度
+  trueLength(str) {
+    str = str || ''
+    return str.replace(/[^x00-xff]/g, '01').length
+    // 将单个汉字替换成两个数字，以实现汉字长度计二的功能
+  },
+
+  // 扁平化滚动条
+  scrollbar(classname) {
+    classname = classname ? '.' + classname : ''
+    console.log(classname)
+    let css = `
+      ${classname}::-webkit-scrollbar{
+        width: 15px;
+        border:none;
+      }
+      ${classname}::-webkit-scrollbar:hover{
+        width: 150px;
+      }
+      ${classname}::-webkit-scrollbar-track{
+        background: #f1f1f1;
+      }
+      ${classname}::-webkit-scrollbar-thumb{
+        background: #888;
+      }
+      ${classname}::-webkit-scrollbar-thumb:hover{
+        background: dodgerblue;
+        width: 20px;
+      }
+    `
+    let head = document.getElementsByTagName('head')[0]
+    let cssTag = document.createElement('style')
+    cssTag.innerHTML = css
+    head.appendChild(cssTag)
   }
 }

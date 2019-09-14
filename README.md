@@ -26,7 +26,7 @@
 
 ## 数组排序
 
-### `Ins.sort(array, descending)`
+### `Ins.sort(Array, descending)`
 
 接受两个参数，第一个参数为需要排序的数组，第二个参数为是否降序排序，默认为`false`即升序排列。不同于 js 自带`sort`方法，此方法返回排序过的数组，不改变原数组。
 
@@ -38,6 +38,18 @@
 
 ## 对象和数组的深拷贝
 
-### `Ins.deepClone(obj)`
+### `Ins.deepClone(Object)`
 
 参数应为一个数组或对象，返回拷贝过的新数组/对象。
+
+## 字符串"真实"长度(汉字长度计 2)
+
+### `Ins.trueLength(String)`
+
+参数为需要计算长度的字符串，返回值为长度
+
+## 扁平化滚动条
+
+### `Ins.scrollbar(ClassName)`
+
+参数为需要修改滚动条样式的标签的 className(字符串)，缺省将会修改所有滚动条。若要修改多个 className 的样式，请多次调用。
