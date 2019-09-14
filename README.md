@@ -8,7 +8,7 @@
 
 ---
 
-# 功能
+# APIs
 
 ## 滚动视差(parallax effect)
 
@@ -38,7 +38,7 @@
 
 ## 对象和数组的深拷贝
 
-### `Ins.deepClone(Object)`
+### `Ins.clone(obj)`
 
 参数应为一个数组或对象，返回拷贝过的新数组/对象。
 

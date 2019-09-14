@@ -74,12 +74,12 @@ const Ins = {
   },
 
   // 深拷贝
-  deepClone(obj) {
+  clone(obj) {
     const result = Array.isArray(obj) ? [] : {}
     for (let key in obj) {
       if (obj.hasOwnProperty(key)) {
         if (typeof obj[key] === 'object' && typeof obj[key] !== null) {
-          result[key] = this.deepClone(obj[key])
+          result[key] = this.clone(obj[key])
         } else {
           result[key] = obj[key]
         }
