@@ -14,7 +14,7 @@
 
 ### `Ins.parallax(speed)`
 
-给设置了背景图片的元素添加`class="parallax-bg"`，css 确保`background-position: center 0`
+给设置了背景图片的元素添加`class="Ins-parallax"`
 
 在 JavaScript 中使用 `Ins.parallax(speed)`调用。其中函数的参数`speed`表示背景跟随滚动的速度，`0` 表示图片不跟随，`0.75` 将以 75%的速度跟随。
 

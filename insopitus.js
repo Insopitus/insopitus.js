@@ -3,11 +3,15 @@
 
 const Ins = {
   parallax(n) {
-    const parallax = document.querySelector('.parallax-bg')
+    n = n || 0.75
+    const parallax = document.querySelector('.ins-parallax')
+    console.log(parallax)
     parallax.style.transition = 'initial'
+    parallax.style.backgroundPosition = 'center 0'
     window.addEventListener('scroll', () => {
-      let scroll = document.body.scrollTop
+      let scroll = document.documentElement.scrollTop
       parallax.style.backgroundPosition = `center ${scroll * (1 - n)}px`
+      console.log(scroll)
     })
   },
 
