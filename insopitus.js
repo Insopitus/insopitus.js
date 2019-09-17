@@ -126,5 +126,16 @@ const Ins = {
     let cssTag = document.createElement('style')
     cssTag.innerHTML = css
     head.appendChild(cssTag)
-  }
+  },
+  randomName(lang){
+			const givennameEN = ['Michael','Tom','Jerry','Mary','John']
+			const familynameEN = ['Trump','Bush','']
+			const givennameCH = []
+			const familynameCH = []
+			let fullname = ''
+			switch(lang){
+				case 'en':
+					return Math.random()* 
+			}
+    }
 }
