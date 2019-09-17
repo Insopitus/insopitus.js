@@ -53,3 +53,9 @@
 ### `Ins.scrollbar(ClassName)`
 
 参数为需要修改滚动条样式的标签的 className(字符串)，缺省将会修改所有滚动条。若要修改多个 className 的样式，请多次调用。
+
+## 随机生成人名
+
+### `Ins.randomName(lang)`
+
+参数为`'en'`返回英文人名，为`'zh'`返回中文人名。~~新加的功能真的越来越无聊了~~

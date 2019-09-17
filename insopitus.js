@@ -122,20 +122,27 @@ const Ins = {
         width: 20px;
       }
     `
-    let head = document.getElementsByTagName('head')[0]
-    let cssTag = document.createElement('style')
+    const head = document.getElementsByTagName('head')[0]
+    const cssTag = document.createElement('style')
     cssTag.innerHTML = css
     head.appendChild(cssTag)
   },
-  randomName(lang){
-			const givennameEN = ['Michael','Tom','Jerry','Mary','John']
-			const familynameEN = ['Trump','Bush','']
-			const givennameCH = []
-			const familynameCH = []
-			let fullname = ''
-			switch(lang){
-				case 'en':
-					return Math.random()* 
-			}
+  randomName(lang) {
+    const givennameEN = ['Michael', 'Tom', 'Jerry', 'Mary', 'John']
+    const familynameEN = ['Trump', 'Bush', 'Smith', 'Jones', 'Williams']
+    const givennameCH = ['一一', '二狗', '三', '四', '五']
+    const familynameCH = ['张', '王', '刘', '李', '陈']
+    let fullname = ''
+    function random(arr) {
+      let length = arr.length
+      let position = Math.floor(Math.random() * length)
+      return arr[position]
     }
+    switch (lang) {
+      case 'en':
+        return random(givennameEN) + ' ' + random(familynameEN)
+      case 'zh':
+        return random(familynameCH) + random(givennameCH)
+    }
+  }
 }
