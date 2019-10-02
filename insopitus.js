@@ -127,12 +127,13 @@ const Ins = {
     cssTag.innerHTML = css
     head.appendChild(cssTag)
   },
+
+  // 随机人名生成
   randomName(lang) {
     const givennameEN = ['Michael', 'Tom', 'Jerry', 'Mary', 'John']
     const familynameEN = ['Trump', 'Bush', 'Smith', 'Jones', 'Williams']
     const givennameCH = ['一一', '二狗', '三', '四', '五']
     const familynameCH = ['张', '王', '刘', '李', '陈']
-    let fullname = ''
     function random(arr) {
       let length = arr.length
       let position = Math.floor(Math.random() * length)
@@ -144,5 +145,22 @@ const Ins = {
       case 'zh':
         return random(familynameCH) + random(givennameCH)
     }
+  },
+
+  // 去字符串首尾空格trim   js有这个方法，但是为什么我这儿会出问题。debug结果，为什么return了两次，把return包在else里面会undefined又是为何
+  trim(str) {
+    str = str || ''
+    const strArr = str.split('')
+    // console.log(strArr)
+    if (strArr[0] === ' ') {
+      let newStr = strArr.slice(1).join('')
+      // console.log(newStr)
+      Ins.trim(newStr)
+    }
+    // else if (strArr[strArr.length - 1] === ' ') {
+    //   let newStr = strArr.slice(strArr.length - 1, 1).join('')
+    //   Ins.trim(newStr)
+    // }
+    return str
   }
 }
