@@ -145,22 +145,5 @@ const Ins = {
       case 'zh':
         return random(familynameCH) + random(givennameCH)
     }
-  },
-
-  // 去字符串首尾空格trim   js有这个方法，但是为什么我这儿会出问题。debug结果，为什么return了两次，把return包在else里面会undefined又是为何
-  trim(str) {
-    str = str || ''
-    const strArr = str.split('')
-    // console.log(strArr)
-    if (strArr[0] === ' ') {
-      let newStr = strArr.slice(1).join('')
-      // console.log(newStr)
-      Ins.trim(newStr)
-    }
-    // else if (strArr[strArr.length - 1] === ' ') {
-    //   let newStr = strArr.slice(strArr.length - 1, 1).join('')
-    //   Ins.trim(newStr)
-    // }
-    return str
   }
 }
