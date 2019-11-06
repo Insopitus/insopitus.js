@@ -15,7 +15,7 @@ const Ins = {
     })
   },
 
-  // 随机字符串生成
+  // 随机字符串生成 可考虑使用String.fromCharCode()方法Math.random()*26 + 97
   randomString(arg) {
     let alphabet = ''
     let digit = 4 // digit为id的位数，未传入参数时默认为4；
@@ -100,24 +100,23 @@ const Ins = {
   },
 
   // 扁平化滚动条
-  scrollbar(classname) {
-    classname = classname ? '.' + classname : ''
-    console.log(classname)
+  scrollbar(selector) {
+    selector = selector || ''
     let css = `
-      ${classname}::-webkit-scrollbar{
+      ${selector}::-webkit-scrollbar{
         width: 15px;
         border:none;
       }
-      ${classname}::-webkit-scrollbar:hover{
+      ${selector}::-webkit-scrollbar:hover{
         width: 150px;
       }
-      ${classname}::-webkit-scrollbar-track{
+      ${selector}::-webkit-scrollbar-track{
         background: #f1f1f1;
       }
-      ${classname}::-webkit-scrollbar-thumb{
+      ${selector}::-webkit-scrollbar-thumb{
         background: #888;
       }
-      ${classname}::-webkit-scrollbar-thumb:hover{
+      ${selector}::-webkit-scrollbar-thumb:hover{
         background: dodgerblue;
         width: 20px;
       }
@@ -145,5 +144,39 @@ const Ins = {
       case 'zh':
         return random(familynameCH) + random(givennameCH)
     }
+  },
+
+  // queryString转对象
+  queryStringParse(queryString) {
+    queryString = queryString || ''
+    if (queryString && typeof queryString === 'string') {
+      if (queryString.indexOf('?') !== -1) {
+        queryString = queryString.split('?')[1]
+      }
+      queryArray = queryString.split('&')
+      const queryObject = {}
+      queryArray.forEach(item => {
+        queryObject[item.split('=')[0]] = item.split('=')[1]
+      })
+      return queryObject
+    }
+    return queryString
+  },
+
+  // 数字简写
+  shortNum(num, digit, isZH) {
+    num = parseFloat(num) || 0
+    digit = digit || 1
+    isZH = isZH || false
+    let d = isZH ? 4 : 3 //几位一分隔
+
+    let letters = isZH
+      ? ['', '万', '亿', '兆', '京', '垓']
+      : ['', 'K', 'M', 'B', 'T', 'Q']
+    if (num < Math.pow(10, d)) return String(num)
+    len = String(num.toFixed(0)).length - 1 //输入数字的位数-1
+    let leading = num / Math.pow(Math.pow(10, d), Math.floor(len / d))
+    leading = leading.toFixed(digit)
+    return leading + letters[Math.floor(len / d)]
   }
 }
