@@ -39,7 +39,15 @@ const Ins = {
     }
     return result
   },
-
+  // 随机ID生成(中间11位为时间，前2位和后3位为随机数，一般上不会重复了，可以学习mongoDB的id算法，加上用户ID等等)
+  IDGenerator() {
+    let ID = ''
+    let date = +new Date()
+    ID += date.toString(16)
+    ID += (Math.random() * 100000).toString(16).substring(0, 3)
+    ID = (Math.random() * 100000).toString(16).substring(1, 3) + ID
+    return ID
+  },
   // 排序
   sort(array, descending) {
     descending = descending || false
@@ -169,7 +177,6 @@ const Ins = {
     digit = digit || 1
     isZH = isZH || false
     let d = isZH ? 4 : 3 //几位一分隔
-
     let letters = isZH
       ? ['', '万', '亿', '兆', '京', '垓']
       : ['', 'K', 'M', 'B', 'T', 'Q']
