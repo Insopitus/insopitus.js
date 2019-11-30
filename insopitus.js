@@ -39,13 +39,12 @@ const Ins = {
     }
     return result
   },
-  // 随机ID生成(中间11位为时间，前2位和后3位为随机数，一般上不会重复了，可以学习mongoDB的id算法，加上用户ID等等)
+  // 随机ID生成(前11位为时间，后3位为随机数，一般上不会重复了，可以学习mongoDB的id算法，加上用户ID等等)
   IDGenerator() {
     let ID = ''
     let date = +new Date()
     ID += date.toString(16)
     ID += (Math.random() * 100000).toString(16).substring(0, 3)
-    ID = (Math.random() * 100000).toString(16).substring(1, 3) + ID
     return ID
   },
   // 排序
@@ -185,5 +184,50 @@ const Ins = {
     let leading = num / Math.pow(Math.pow(10, d), Math.floor(len / d))
     leading = leading.toFixed(digit)
     return leading + letters[Math.floor(len / d)]
+  },
+  dateFormat(arg) {
+    let date = !arg ? new Date() : new Date(arg)
+    let a = {
+      year: date.getFullYear(),
+      month: date.getMonth() + 1,
+      date: date.getDate(),
+      day: date.getDay(),
+      hour: date.getHours(),
+      minute: date.getMinutes(),
+      unix: +date
+    }
+    let now = new Date()
+    let today = new Date(
+      `${now.getFullYear()}/${now.getMonth() + 1}/${now.getDate()}`
+    )
+    let result = {
+      monthAndDay: a.month + '-' + a.day
+    }
+    if (a.year === today.getFullYear()) {
+      // 当年显示小时分钟，不显示年
+      result.year = ''
+      result.time = `${
+        a.hour.toString().length === 1 ? '0' + a.hour : a.hour
+      }:${a.minute.toString().length === 1 ? '0' + a.minute : a.minute}`
+      console.log(date - today)
+      if (date - today > 0 && date - today < 86400000) {
+        // 今天
+        result.monthAndDay = '今天'
+      } else if (date - today < 0 && today - date < 86400000) {
+        // 昨天
+        result.monthAndDay = '昨天'
+      }
+    } else {
+      // 非当年显示年份，不显示小时分钟
+      result.year = date.getFullYear()
+      result.time = ''
+    }
+    return (
+      result.year +
+      (result.year === '' ? '' : '-') +
+      result.monthAndDay +
+      (result.time === '' ? '' : ' ') +
+      result.time
+    )
   }
 }
