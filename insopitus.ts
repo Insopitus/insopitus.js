@@ -1,10 +1,9 @@
-// 搭个自己的库
-// export { insParallax, insRandomIdGenerator, insSorting }
 
-const Ins = {
-  parallax(n) {
+
+export default class Ins {
+  static parallax(n:number) {
     n = n || 0.75
-    const parallax = document.querySelector('.ins-parallax')
+    const parallax:HTMLElement = document.querySelector('.ins-parallax')
     console.log(parallax)
     parallax.style.transition = 'initial'
     parallax.style.backgroundPosition = 'center 0'
@@ -13,10 +12,10 @@ const Ins = {
       parallax.style.backgroundPosition = `center ${scroll * (1 - n)}px`
       console.log(scroll)
     })
-  },
+  }
 
   // 随机字符串生成 可考虑使用String.fromCharCode()方法Math.random()*26 + 97
-  randomString(arg) {
+  static randomString(arg:{lowercase:boolean,uppercase:boolean,number:boolean,digit:number}):string {
     let alphabet = ''
     let digit = 4 // digit为id的位数，未传入参数时默认为4；
     if (typeof arg === 'object') {
@@ -38,17 +37,17 @@ const Ins = {
       result = result + id[j]
     }
     return result
-  },
+  }
   // 随机ID生成(前11位为时间，后3位为随机数，一般上不会重复了，可以学习mongoDB的id算法，加上用户ID等等)
-  IDGenerator() {
+  static IDGenerator():string {
     let ID = ''
     let date = +new Date()
     ID += date.toString(16)
     ID += (Math.random() * 100000).toString(16).substring(0, 3)
     return ID
-  },
+  }
   // 排序
-  sort(array, descending) {
+  static sort(array:number[], descending:boolean):number[] {
     descending = descending || false
     if (!Array.isArray(array)) {
       array = Array.prototype.slice.call(array)
@@ -70,22 +69,22 @@ const Ins = {
     } else {
       return arr.reverse()
     }
-  },
+  }
 
   // 限流
-  throttlerSetTime: false,
-  throttler(callback, time) {
-    let delay = parseInt(time) || 100
+  throttlerSetTime = false
+  static throttler(callback:Function, time:number) {
+    let delay = time || 100
     if (!this.throttlerSetTime) {
       this.throttlerSetTime = setTimeout(() => {
         this.throttlerSetTime = null
         callback()
       }, delay)
     }
-  },
+  }
 
   // 深拷贝
-  clone(obj) {
+  static clone(obj:{}):{} {
     const result = Array.isArray(obj) ? [] : {}
     for (let key in obj) {
       if (obj.hasOwnProperty(key)) {
@@ -97,17 +96,17 @@ const Ins = {
       }
     }
     return result
-  },
+  }
 
   // 字符串真实长度
-  trueLength(str) {
+  static trueLength(str:string):number {
     str = str || ''
     return str.replace(/[^x00-xff]/g, '01').length
     // 将单个汉字替换成两个数字，以实现汉字长度计二的功能
-  },
+  }
 
   // 扁平化滚动条
-  scrollbar(selector) {
+  static scrollbar(selector:string) {
     selector = selector || ''
     let css = `
       ${selector}::-webkit-scrollbar{
@@ -132,10 +131,10 @@ const Ins = {
     const cssTag = document.createElement('style')
     cssTag.innerHTML = css
     head.appendChild(cssTag)
-  },
+  }
 
   // 随机人名生成
-  randomName(lang) {
+  static randomName(lang:'zh'|'en'):string {
     const givennameEN = ['Michael', 'Tom', 'Jerry', 'Mary', 'John']
     const familynameEN = ['Trump', 'Bush', 'Smith', 'Jones', 'Williams']
     const givennameCH = ['一一', '二狗', '三', '四', '五']
@@ -151,16 +150,15 @@ const Ins = {
       case 'zh':
         return random(familynameCH) + random(givennameCH)
     }
-  },
-
+  }
   // queryString转对象
-  queryStringParse(queryString) {
+  static queryStringParse(queryString:string) {
     queryString = queryString || ''
     if (queryString && typeof queryString === 'string') {
       if (queryString.indexOf('?') !== -1) {
         queryString = queryString.split('?')[1]
       }
-      queryArray = queryString.split('&')
+      const queryArray = queryString.split('&')
       const queryObject = {}
       queryArray.forEach(item => {
         queryObject[item.split('=')[0]] = item.split('=')[1]
@@ -168,10 +166,10 @@ const Ins = {
       return queryObject
     }
     return queryString
-  },
+  }
 
   // 数字简写
-  shortNum(num, digit, isZH) {
+  static shortNum(num:number, digit:number, isZH:boolean) {
     num = parseFloat(num) || 0
     digit = digit || 1
     isZH = isZH || false
@@ -184,8 +182,8 @@ const Ins = {
     let leading = num / Math.pow(Math.pow(10, d), Math.floor(len / d))
     leading = leading.toFixed(digit)
     return leading + letters[Math.floor(len / d)]
-  },
-  dateFormat(arg) {
+  }
+  static dateFormat(arg:Date|string|number) {
     let date = !arg ? new Date() : new Date(arg)
     let a = {
       year: date.getFullYear(),
